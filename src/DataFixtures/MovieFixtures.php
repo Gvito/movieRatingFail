@@ -2,12 +2,10 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Movie;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-//Ne c ps kel é le bon faker
-// use App\Entity\Faker;
-// use Doctrine\Bundle\Faker;
-// use Faker;
+use Doctrine\Bundle\Faker;
 
 class MovieFixtures extends Fixture
 {

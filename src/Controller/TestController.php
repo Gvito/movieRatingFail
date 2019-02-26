@@ -6,7 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Movie;
 use App\Entity\Evaluation;
+use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 class TestController extends AbstractController
@@ -14,13 +16,13 @@ class TestController extends AbstractController
 
 
     /**
-     * fonction fète pr tester ds trucs
+     * function pour tester les évaluations/notes
      * @Route("/test", name="test")
      */
     public function test()
     {
         $ms = $this->getDoctrine()->getRepository(Movie::class)->findAll();
-        //fonction qui essé de calc moyen note flm mais prblm
+        //fonction qui calcule la note moyenne d'un film (ne marche pas, à vérifier).
         for ($i=0; $i < count($ms) ; $i) {
           $notes = $ms[$i]->getEvaluations()->getGrade();
         }
@@ -30,7 +32,7 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="accueil")
      */
     public function index()
     {
@@ -41,7 +43,7 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/single/{id}", name="index")
+     * @Route("/single/{id}", name="app_show")
      */
     public function show(Movie $a)
     {
@@ -51,8 +53,9 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/evaluation/{id}", name="index")
-     * @Isgranted("ROLE")
+     * @Route("/evaluation/{id}", name="app_rate")
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     public function rate(Movie $b, Request $c)
     {
