@@ -36,7 +36,7 @@ class TestController extends AbstractController
      */
     public function index()
     {
-        $ms = $this->getDoctrine()->getRepository(Movie::class)->findAll;
+        $ms = $this->getDoctrine()->getRepository(Movie::class)->findAll();
         return $this->render('test/index.html.twig', [
           "ms" => $ms
         ]);
@@ -47,7 +47,7 @@ class TestController extends AbstractController
      */
     public function show(Movie $a)
     {
-        return $this->render('single.html.twig', [
+        return $this->render('test/single.html.twig', [
           "a" => $a
         ]);
     }

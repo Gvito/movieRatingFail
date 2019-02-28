@@ -1,9 +1,20 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}{{ a.title }}{% endblock %}
-
-{% block pageTitle %} {{ a.title }} {% endblock %}
-
 {% block main %}
+
+<div class="card text-center m-5">
+  <div class="card-header">
+    {% block pageTitle %} <h2> {{ a.title }} </h2> {% endblock %}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> Sumary </h5>
+    <p class="card-text"> {{ a.sumary}} </p>
+    <p class="card-text"> Type: {{ a.type}}  </p>
+    <p class="card-text"> Realisateur: {{ a.author}}  </p>
+  </div>
+  <div class="card-footer text-muted">
+    Date de sortie: {{ a.releaseYear|date('d-m-Y')}}
+  </div>
+</div>
 
 {% endblock %}
