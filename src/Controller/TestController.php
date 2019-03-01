@@ -66,16 +66,16 @@ class TestController extends AbstractController
         $form = $this->createFormBuilder($d)
             ->add('comment')
             ->add('grade')
-            ->add('save', SubmitType::class)
+            ->add('soumettre', SubmitType::class)
             ->getForm();
 
         $form->handleRequest($c);
 
         if ($form->isSubmitted() && $form->isValid()) {
-          $d.setMovie($b);
-          $d.setUser($u);
+          $d->setMovie($b);
+          $d->setUser($u);
           $entityManager = $this->getDoctrine()->getManager();
-          $entityManager->persist($d);
+          $entityManager->persist($b, $u);
           $entityManager->flush();
         }
 

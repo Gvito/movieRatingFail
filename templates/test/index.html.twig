@@ -2,10 +2,18 @@
 
 {% block title %}Accueil{% endblock %}
 
-{% block pageTitle %}<h1 class=" mb-5">Accueil</h1>{% endblock %}
+{% block pageTitle %}
+<div class="d-flex justify-content-between">
+  <h1 class="mb-4">Accueil</h1>
+  {% if is_granted('ROLE_USER') %}
+      <button type="button" class="btn btn-danger mb-5"><a href="{{ path("app_logout")}}" class="text-white text-decoration-none">Déconnexion</a></button>
+  {% endif %}
+</div>
+{% endblock %}
 
 {% block main %}
-<div class="card-columns">
+
+<div class="card-columns pb-5">
   {% for m in ms %}
   <div class="card w-100">
     <img class="card-img-top" style="height: 250px; width: 100%; display: block;" src="https://lorempixel.com/540/370/" alt="">

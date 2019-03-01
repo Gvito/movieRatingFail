@@ -3,6 +3,12 @@
 {% block title %}Information du film{% endblock %}
 
 {% block main %}
+<div class=" d-flex justify-content-between">
+    <button type="button" class="btn btn-secondary"><a href="{{ path("accueil")}}" class="text-white text-decoration-none"><i class="fas fa-home"></i></a></button>
+{% if is_granted('ROLE_USER') %}
+    <button type="button" class="btn btn-danger"><a href="{{ path("app_logout")}}" class="text-white text-decoration-none">Déconnexion</a></button>
+{% endif %}
+</div>
 
 <div class="card text-center m-5">
   <div class="card-header">

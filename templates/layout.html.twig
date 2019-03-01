@@ -3,8 +3,8 @@
 {% block body %}
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Movie Rating</h1>
-    <p class="lead">Le premier site français pour évaluer les films tout pourris produits par le cinéma français</p>
+    <h1 class="display-4"><a href="{{ path("accueil")}}" class="text-decoration-none">Movie Rating</a></h1>
+    <p class="lead">Le premier site français pour évaluer les films de mauvais goût produits par le cinéma français !</p>
   </div>
 </div>
 <!-- A voir si on intégre ds le futur -->
@@ -33,9 +33,9 @@
   {% block pageTitle %}{% endblock %}
   {% block main %}{% endblock %}
 </div>
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid m-1">
   <div class="container">
-    <p class="lead">Si vous êtes un réalisateur français et que vous vous plaigniez des notes attribuées à votre navet, il ne fallait pas produire une telle bouze. XOXO</p>
+    <p class="lead text-center">Footer du site MovieRating ! Créer par Thomas et corriger par Gvito</p>
   </div>
 </div>
 {% endblock %}
