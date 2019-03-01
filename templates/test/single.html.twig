@@ -1,9 +1,28 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}{{ a.title }}{% endblock %}
-
-{% block pageTitle %} {{ a.title }} {% endblock %}
+{% block title %}Information du film{% endblock %}
 
 {% block main %}
+<div class=" d-flex justify-content-between">
+    <button type="button" class="btn btn-secondary"><a href="{{ path("accueil")}}" class="text-white text-decoration-none"><i class="fas fa-home"></i></a></button>
+{% if is_granted('ROLE_USER') %}
+    <button type="button" class="btn btn-danger"><a href="{{ path("app_logout")}}" class="text-white text-decoration-none">Déconnexion</a></button>
+{% endif %}
+</div>
+
+<div class="card text-center m-5">
+  <div class="card-header">
+    <h3> {{ a.title }} </h3>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> Sumary </h5>
+    <p class="card-text"> {{ a.sumary}} </p>
+    <p class="card-text"> Type: {{ a.type}}  </p>
+    <p class="card-text"> Realisateur: {{ a.author}}  </p>
+  </div>
+  <div class="card-footer text-muted">
+    Date de sortie: {{ a.releaseYear|date('d-m-Y')}}
+  </div>
+</div>
 
 {% endblock %}

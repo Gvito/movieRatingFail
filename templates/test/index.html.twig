@@ -1,3 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block pageTitle %}
+<div class="d-flex justify-content-between">
+  <h1 class="mb-4">Accueil</h1>
+  {% if is_granted('ROLE_USER') %}
+      <button type="button" class="btn btn-danger mb-5"><a href="{{ path("app_logout")}}" class="text-white text-decoration-none">Déconnexion</a></button>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block main %}
+
+<div class="card-columns pb-5">
+  {% for m in ms %}
+  <div class="card w-100">
+    <img class="card-img-top" style="height: 250px; width: 100%; display: block;" src="https://lorempixel.com/540/370/" alt="">
+    <div class="card-body">
+      <h5 class="card-title">{{ m.title }}</h5>
+      <p class="card-text text-truncate">{{ m.sumary}}</p>
+      <a href="{{ path("app_rate", {"id" : m.id})}}" class="btn btn-primary">Evaluer</a>
+      <a href="{{ path("app_show", {"id" : m.id})}}" class="btn btn-primary">Voir</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
 <!-- Plus tar on essaierra d'intégrer un formulair de notation sur page -->
 <!-- <form>
   <div class="form-group">
@@ -29,35 +58,4 @@
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
 </form> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% extends 'layout.html.twig' %}
-
-{% block title %}Accueil
-
-{% block pageTitle %}Accueil
-
-{% block main %}
-{% for m in ms %}
-<div class="card" style="width: 18rem;">
-<img class="card-img-top" src="..." alt="Card image cap">
-<div class="card-body">
-<h5 class="card-title">{{ m.title }}</h5>
-<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-<a href="{{ path("evaluation", {"id" : m.id})}}" class="btn btn-primary">Evaluer</a>
-<a href="{{ path("single", {"id" : m.id})}}" class="btn btn-primary">Voir</a>
-</div>
-</div>
-{% endfor %}
 {% endblock %}

@@ -2,8 +2,20 @@
 
 {% block title %}Evaluation{% endblock %}
 
-{% block pageTitle %}Evaluer : {{ a.title }}{% endblock %}
+{% block pageTitle %}
+<div class=" d-flex justify-content-between">
+    <button type="button" class="btn btn-secondary"><a href="{{ path("accueil")}}" class="text-white text-decoration-none"><i class="fas fa-home"></i></a></button>
+{% if is_granted('ROLE_USER') %}
+    <button type="button" class="btn btn-danger"><a href="{{ path("app_logout")}}" class="text-white text-decoration-none">Déconnexion</a></button>
+{% endif %}
+</div>
+<div class="mx-auto w-50 mb-5 mt-5">
+  <h4 class="pb-2">Evaluer le film : " <span class="font-italic">{{ b.title }}</span> "</h4>
+{% endblock %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block main %}
-{{ form($form) }}
+    {{ form(form) }}
+</div>
 {% endblock %}
