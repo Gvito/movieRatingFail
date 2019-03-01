@@ -1,10 +1,12 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}Information du film{% endblock %}
+
 {% block main %}
 
 <div class="card text-center m-5">
   <div class="card-header">
-    {% block pageTitle %} <h2> {{ a.title }} </h2> {% endblock %}
+    <h3> {{ a.title }} </h3>
   </div>
   <div class="card-body">
     <h5 class="card-title"> Sumary </h5>

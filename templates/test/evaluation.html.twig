@@ -2,8 +2,12 @@
 
 {% block title %}Evaluation{% endblock %}
 
-{% block pageTitle %}Evaluer : {{ a.title }}{% endblock %}
+{% block pageTitle %}
+<div class="mx-auto w-50 mb-5 mt-5">
+  <h4>Evaluer le film : " <span class="font-italic"> {{ b.title }} </span> "</h4>
+{% endblock %}
 
 {% block main %}
-{{ form($form) }}
+  {{ form(form) }}
+</div>
 {% endblock %}

@@ -9,6 +9,7 @@ use App\Entity\Evaluation;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
 class TestController extends AbstractController
@@ -55,11 +56,12 @@ class TestController extends AbstractController
     /**
      * @Route("/evaluation/{id}", name="app_rate")
      *
-     * @IsGranted("ROLE_ADMIN")
+     * @Isgranted("ROLE_USER")
      */
     public function rate(Movie $b, Request $c)
     {
         $d = new Evaluation();
+        $u = new User();
 
         $form = $this->createFormBuilder($d)
             ->add('comment')
@@ -67,7 +69,7 @@ class TestController extends AbstractController
             ->add('save', SubmitType::class)
             ->getForm();
 
-        $form->handleRequest($request);
+        $form->handleRequest($c);
 
         if ($form->isSubmitted() && $form->isValid()) {
           $d.setMovie($b);

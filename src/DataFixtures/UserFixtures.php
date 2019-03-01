@@ -22,10 +22,10 @@ class UserFixtures extends Fixture
       $faker = Faker\Factory::create('fr_FR');
       for ($i=0; $i < 10; $i++) {
         $user = new User();
-        $user->setUsername("test$i");
+        $user->setUsername("doudou$i");
         $user->setPassword($this->passwordEncoder->encodePassword(
           $user,
-          "the_new_password$i"
+          "password$i"
         ));
         $manager->persist($user);
       }
